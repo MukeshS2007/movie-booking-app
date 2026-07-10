@@ -1,0 +1,49 @@
+.movie-details{
+    max-width:1200px;
+    margin:40px auto;
+    display:flex;
+    gap:40px;
+    padding:20px;
+}
+
+.movie-details img{
+    width:350px;
+    border-radius:12px;
+}
+
+.details{
+    flex:1;
+}
+
+.details h1{
+    margin-bottom:20px;
+}
+
+.details p{
+    margin:12px 0;
+    font-size:18px;
+}
+
+.buttons{
+    margin-top:30px;
+    display:flex;
+    gap:20px;
+}
+
+.buttons button{
+    padding:12px 24px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.trailer{
+    background:#333;
+    color:white;
+}
+
+.book{
+    background:#e50914;
+    color:white;
+}
