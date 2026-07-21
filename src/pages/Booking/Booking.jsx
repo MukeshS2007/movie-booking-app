@@ -146,58 +146,43 @@ function Booking() {
       {/* Date and Time */}
       <div className="booking-selection">
 
-        <div className="selection-box">
-          <label>
-            📅 SELECT DATE
-          </label>
+        <div className="date-time-section">
 
-          <input
-            type="date"
-            value={showDate}
-            onChange={(e) => {
-              setShowDate(e.target.value);
-              setSelectedSeats([]);
-            }}
-          />
-        </div>
+  <div className="selection-group">
+    <label htmlFor="showDate">
+      📅 Select Date
+    </label>
 
-        <div className="selection-box">
-          <label>
-            ⏰ SELECT SHOW TIME
-          </label>
+    <input
+      id="showDate"
+      type="date"
+      value={showDate}
+      min={new Date().toISOString().split("T")[0]}
+      onChange={(e) => setShowDate(e.target.value)}
+    />
+  </div>
 
-          <select
-            value={showTime}
-            onChange={(e) => {
-              setShowTime(e.target.value);
-              setSelectedSeats([]);
-            }}
-          >
-            <option value="">
-              Choose a showtime
-            </option>
+  <div className="selection-group">
+    <label htmlFor="showTime">
+      ⏰ Select Show Time
+    </label>
 
-            <option value="10:00 AM">
-              10:00 AM
-            </option>
+    <select
+      id="showTime"
+      value={showTime}
+      onChange={(e) => setShowTime(e.target.value)}
+    >
+      <option value="">Choose a show time</option>
+      <option value="10:00 AM">10:00 AM</option>
+      <option value="1:00 PM">1:00 PM</option>
+      <option value="4:00 PM">4:00 PM</option>
+      <option value="7:00 PM">7:00 PM</option>
+      <option value="10:00 PM">10:00 PM</option>
+    </select>
+  </div>
 
-            <option value="1:00 PM">
-              1:00 PM
-            </option>
+</div>
 
-            <option value="4:00 PM">
-              4:00 PM
-            </option>
-
-            <option value="7:00 PM">
-              7:00 PM
-            </option>
-
-            <option value="10:00 PM">
-              10:00 PM
-            </option>
-          </select>
-        </div>
 
       </div>
 

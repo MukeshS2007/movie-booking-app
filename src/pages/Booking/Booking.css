@@ -10,6 +10,10 @@
   color: white;
 }
 
+/* =========================
+   HEADER
+========================= */
+
 .booking-header {
   text-align: center;
   margin-bottom: 45px;
@@ -31,50 +35,62 @@
   color: #999;
 }
 
-/* Date and Time */
+/* =========================
+   DATE & TIME SELECTION
+========================= */
 
-.booking-selection {
-  max-width: 850px;
-  margin: auto;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.date-time-section {
+  display: flex;
+  justify-content: center;
   gap: 25px;
+  margin: 35px auto;
+  flex-wrap: wrap;
 }
 
-.selection-box {
+.selection-group {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.selection-box label {
-  color: #aaa;
-  font-size: 12px;
-  font-weight: bold;
+.selection-group label {
+  color: #ddd;
+  font-size: 14px;
+  font-weight: 600;
   letter-spacing: 1px;
 }
 
-.selection-box input,
-.selection-box select {
-  padding: 15px;
+.selection-group input,
+.selection-group select {
+  width: 220px;
+  padding: 14px 16px;
+
+  border-radius: 10px;
+  border: 1px solid #333;
 
   background: #171717;
   color: white;
 
-  border: 1px solid #333;
-  border-radius: 8px;
-
   font-size: 15px;
-}
-
-.selection-box input:focus,
-.selection-box select:focus {
   outline: none;
-  border-color: #e50914;
+  cursor: pointer;
 }
 
-/* Screen */
+.selection-group input:focus,
+.selection-group select:focus {
+  border-color: #e50914;
+  box-shadow: 0 0 10px rgba(229, 9, 20, 0.3);
+}
+
+/* Calendar icon */
+.selection-group input::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+/* =========================
+   SCREEN
+========================= */
 
 .screen-section {
   max-width: 700px;
@@ -111,7 +127,9 @@
   font-size: 13px;
 }
 
-/* Seats */
+/* =========================
+   SEATS
+========================= */
 
 .seat-section {
   text-align: center;
@@ -126,8 +144,7 @@
   margin: auto;
 
   display: grid;
-  grid-template-columns:
-    repeat(5, 1fr);
+  grid-template-columns: repeat(5, 1fr);
 
   gap: 15px;
 }
@@ -155,6 +172,7 @@
   background: #e50914;
   border-color: #ff3844;
   color: white;
+
   box-shadow:
     0 5px 15px rgba(229, 9, 20, 0.4);
 }
@@ -163,10 +181,13 @@
   background: #4a1c1c;
   border-color: #632222;
   color: #777;
+
   cursor: not-allowed;
 }
 
-/* Legend */
+/* =========================
+   SEAT LEGEND
+========================= */
 
 .seat-legend {
   display: flex;
@@ -205,7 +226,9 @@
   background: #4a1c1c;
 }
 
-/* Summary */
+/* =========================
+   BOOKING SUMMARY
+========================= */
 
 .booking-summary {
   max-width: 700px;
@@ -241,8 +264,7 @@
 
 .summary-details {
   display: grid;
-  grid-template-columns:
-    repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 
   gap: 20px;
 
@@ -265,6 +287,10 @@
   word-break: break-word;
 }
 
+/* =========================
+   PRICE
+========================= */
+
 .price-section {
   display: flex;
   justify-content: space-between;
@@ -283,6 +309,10 @@
   color: #e50914;
   font-size: 28px;
 }
+
+/* =========================
+   CONFIRM BUTTON
+========================= */
 
 .confirm-button {
   width: 100%;
@@ -319,7 +349,9 @@
   cursor: not-allowed;
 }
 
-/* Responsive */
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media (max-width: 700px) {
   .booking-page {
@@ -330,8 +362,19 @@
     font-size: 36px;
   }
 
-  .booking-selection {
-    grid-template-columns: 1fr;
+  .date-time-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .selection-group {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .selection-group input,
+  .selection-group select {
+    width: 100%;
   }
 
   .seat-layout {

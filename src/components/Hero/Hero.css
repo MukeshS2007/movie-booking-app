@@ -5,31 +5,22 @@
   color: white;
   background: #080808;
 }
-
 .hero-background {
   position: absolute;
-  inset: 0;
+  top: 0;
+  right: 0;
 
-  background-image:
-    url("https://image.tmdb.org/t/p/original/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg");
+  width: 70%;
+  height: 100%;
 
-  background-size: cover;
-  background-position: center 25%;
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnziwFJvM_Xh4BaW1M8mn2S4mMtttmDjOzVaImthlnjQ&s=10");
 
-  transform: scale(1.02);
-  animation: heroZoom 12s ease-in-out infinite alternate;
+  background-size: contain;
+  background-position: right center;
+  background-repeat: no-repeat;
+
+  z-index: 0;
 }
-
-@keyframes heroZoom {
-  from {
-    transform: scale(1.02);
-  }
-
-  to {
-    transform: scale(1.08);
-  }
-}
-
 .hero-overlay {
   position: relative;
   min-height: 85vh;
@@ -39,21 +30,23 @@
 
   padding: 80px 8%;
 
+  z-index: 1;
+
   background:
     linear-gradient(
       90deg,
-      rgba(0, 0, 0, 0.95) 0%,
-      rgba(0, 0, 0, 0.78) 35%,
-      rgba(0, 0, 0, 0.35) 70%,
-      rgba(0, 0, 0, 0.65) 100%
+      #080808 0%,
+      rgba(8, 8, 8, 0.98) 25%,
+      rgba(8, 8, 8, 0.75) 45%,
+      rgba(8, 8, 8, 0.25) 75%,
+      rgba(8, 8, 8, 0.45) 100%
     ),
     linear-gradient(
       0deg,
       #080808 0%,
-      transparent 35%
+      transparent 40%
     );
 }
-
 .hero-content {
   max-width: 650px;
   animation: fadeUp 1s ease;

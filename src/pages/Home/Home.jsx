@@ -20,10 +20,7 @@ function Home() {
 
         setMovies(response.data);
       } catch (error) {
-        console.error(
-          "Error fetching movies:",
-          error
-        );
+        console.error("Error fetching movies:", error);
       } finally {
         setLoading(false);
       }
@@ -32,8 +29,9 @@ function Home() {
     fetchMovies();
   }, []);
 
+  // Safe search filter
   const filteredMovies = movies.filter((movie) =>
-    movie.title
+    (movie.title || "")
       .toLowerCase()
       .includes(search.toLowerCase())
   );
@@ -45,31 +43,41 @@ function Home() {
       <Hero />
 
       <section className="movies-section">
-        <div className="section-header">
+
+        {/* Attractive Now Showing Title Card */}
+        <div className="now-showing-title-card">
           <div>
-            <p className="section-label">
-              DISCOVER YOUR NEXT EXPERIENCE
-            </p>
+            <span className="section-label">
+              🎬 MOVIEBOOKING
+            </span>
 
             <h2>Now Showing</h2>
+
+            <p>
+              Discover the latest blockbusters and book your
+              perfect movie experience.
+            </p>
           </div>
 
-          <span className="movie-count">
-            {filteredMovies.length} Movies
-          </span>
+          <div className="film-icon">
+            🎞️
+          </div>
         </div>
 
+        {/* Search Bar */}
         <SearchBar
           search={search}
           setSearch={setSearch}
         />
 
+        {/* Movies */}
         {loading ? (
           <div className="loading">
             <h3>Loading movies...</h3>
           </div>
         ) : (
           <div className="movie-grid">
+
             {filteredMovies.map((movie) => (
               <MovieCard
                 key={movie._id}
@@ -80,13 +88,16 @@ function Home() {
             {filteredMovies.length === 0 && (
               <div className="no-movies">
                 <h3>🎬 No movies found</h3>
+
                 <p>
                   Try searching for another movie.
                 </p>
               </div>
             )}
+
           </div>
         )}
+
       </section>
     </div>
   );
