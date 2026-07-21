@@ -1,72 +1,83 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+.navbar {
+  height: 70px;
+  padding: 0 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(8, 8, 8, 0.95);
+  border-bottom: 1px solid #242424;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.navbar{
-    height:70px;
-    background:#111827;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:0 60px;
+.logo {
+  color: white;
+  text-decoration: none;
+  font-size: 23px;
+  font-weight: bold;
 }
 
-.logo a{
-    color:#ff4d4d;
-    text-decoration:none;
-    font-size:28px;
-    font-weight:bold;
+.logo span {
+  color: #e50914;
 }
 
-.nav-links{
-    display:flex;
-    gap:30px;
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
 }
 
-.nav-links a{
-    color:white;
-    text-decoration:none;
-    font-size:18px;
+.nav-links a {
+  color: #ddd;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
-.nav-links a:hover{
-    color:#ff4d4d;
+.nav-links a:hover {
+  color: #e50914;
 }
 
-.search-box input{
-    width:250px;
-    height:40px;
-    border:none;
-    outline:none;
-    border-radius:8px;
-    padding-left:15px;
+.welcome {
+  color: #aaa;
+  font-size: 14px;
 }
 
-.auth-buttons{
-    display:flex;
-    gap:15px;
+.register-button {
+  background: #e50914;
+  color: white !important;
+  padding: 9px 18px;
+  border-radius: 6px;
 }
 
-.login-btn,
-.register-btn{
-    border:none;
-    padding:10px 18px;
-    border-radius:8px;
-    cursor:pointer;
-    font-size:16px;
+.logout-button {
+  border: 1px solid #e50914;
+  background: transparent;
+  color: #e50914;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
-.login-btn{
-    background:white;
+.logout-button:hover {
+  background: #e50914;
+  color: white;
 }
 
-.register-btn{
-    background:#ff4d4d;
-    color:white;
-}
+@media (max-width: 700px) {
+  .navbar {
+    padding: 0 20px;
+  }
 
-.register-btn:hover{
-    background:#e63939;
+  .nav-links {
+    gap: 10px;
+  }
+
+  .welcome {
+    display: none;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
 }

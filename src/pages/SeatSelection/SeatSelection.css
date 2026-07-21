@@ -1,0 +1,47 @@
+.seat-page{
+    width:90%;
+    margin:40px auto;
+    text-align:center;
+}
+
+.screen{
+    width:60%;
+    margin:30px auto;
+    padding:15px;
+    background:#444;
+    color:white;
+    border-radius:10px;
+}
+
+.seat-grid{
+    display:grid;
+    grid-template-columns:repeat(8,60px);
+    gap:15px;
+    justify-content:center;
+    margin:40px 0;
+}
+
+.seat{
+    width:60px;
+    height:60px;
+    border:none;
+    border-radius:8px;
+    background:#ddd;
+    cursor:pointer;
+}
+
+.selected{
+    background:#2ecc71;
+    color:white;
+}
+
+.payment-btn{
+    margin-top:30px;
+    padding:15px 30px;
+    border:none;
+    border-radius:8px;
+    background:#e50914;
+    color:white;
+    cursor:pointer;
+    font-size:18px;
+}

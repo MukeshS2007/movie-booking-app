@@ -4,21 +4,35 @@ import { Link } from "react-router-dom";
 function MovieCard({ movie }) {
   return (
     <div className="movie-card">
-      <img src={movie.poster} alt={movie.title} />
+      <div className="poster-container">
+        <img
+          src={movie.poster}
+          alt={movie.title}
+        />
+
+        <div className="rating-badge">
+          ⭐ {movie.rating}
+        </div>
+      </div>
 
       <div className="movie-info">
         <h3>{movie.title}</h3>
 
-        <p>⭐ {movie.rating}</p>
+        <div className="movie-meta">
+          <span>{movie.genre}</span>
+          <span>•</span>
+          <span>{movie.language}</span>
+        </div>
 
-        <p>{movie.genre}</p>
+        <p className="duration">
+          ⏱ {movie.duration}
+        </p>
 
-        <p>{movie.language}</p>
-
-        <p>{movie.duration}</p>
-
-        <Link to={`/movie/${movie.id}`}>
-          <button>Book Now</button>
+        <Link
+          to={`/movie/${movie._id}`}
+          className="book-button"
+        >
+          🎟 Book Now
         </Link>
       </div>
     </div>

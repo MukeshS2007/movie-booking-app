@@ -1,0 +1,27 @@
+.theatre-page{
+    width:90%;
+    margin:40px auto;
+}
+
+.theatre-card{
+    background:white;
+    padding:20px;
+    margin:20px 0;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+}
+
+.timings{
+    margin-top:15px;
+}
+
+.timings button{
+    margin-right:15px;
+    margin-top:10px;
+    padding:10px 18px;
+    border:none;
+    border-radius:6px;
+    background:#e50914;
+    color:white;
+    cursor:pointer;
+}

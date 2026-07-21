@@ -1,35 +1,61 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar() {
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("user"))
+  );
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    setUser(null);
+
+    window.location.href = "/";
+  };
+
   return (
     <nav className="navbar">
-      <div className="logo">
-        <Link to="/">🎬 MovieVerse</Link>
-      </div>
+      <Link to="/" className="logo">
+        🎬 <span>Movie</span>Booking
+      </Link>
 
       <div className="nav-links">
         <Link to="/">Home</Link>
-        <Link to="/">Movies</Link>
-      </div>
 
-      <div className="search-box">
-        <input
-          type="text"
-          placeholder="Search movies..."
-        />
-      </div>
+        {user ? (
+          <>
+            <span className="welcome">
+              Welcome, {user.name} 👋
+            </span>
 
-      <div className="auth-buttons">
-        <Link to="/login">
-          <button className="login-btn">Login</button>
-        </Link>
+            <Link to="/my-bookings">
+              My Bookings
+            </Link>
 
-        <Link to="/register">
-          <button className="register-btn">
-            Register
-          </button>
-        </Link>
+            <button
+              className="logout-button"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <Link to="/login">
+              Login
+            </Link>
+
+            <Link
+              to="/register"
+              className="register-button"
+            >
+              Register
+            </Link>
+          </>
+        )}
       </div>
     </nav>
   );

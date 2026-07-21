@@ -2,38 +2,93 @@ import Navbar from "../../components/Navbar/Navbar";
 import Hero from "../../components/Hero/Hero";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import MovieCard from "../../components/MovieCard/MovieCard";
-import movies from "../../data/movies";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import "./Home.css";
 
 function Home() {
+  const [search, setSearch] = useState("");
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/api/movies"
+        );
+
+        setMovies(response.data);
+      } catch (error) {
+        console.error(
+          "Error fetching movies:",
+          error
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMovies();
+  }, []);
+
+  const filteredMovies = movies.filter((movie) =>
+    movie.title
+      .toLowerCase()
+      .includes(search.toLowerCase())
+  );
+
   return (
-    <>
+    <div className="home-page">
       <Navbar />
 
       <Hero />
 
-      <SearchBar />
+      <section className="movies-section">
+        <div className="section-header">
+          <div>
+            <p className="section-label">
+              DISCOVER YOUR NEXT EXPERIENCE
+            </p>
 
-      <section style={{ padding: "40px" }}>
-        <h2>Now Showing</h2>
+            <h2>Now Showing</h2>
+          </div>
 
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "20px",
-            justifyContent: "center",
-            marginTop: "30px",
-          }}
-        >
-          {movies.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              movie={movie}
-            />
-          ))}
+          <span className="movie-count">
+            {filteredMovies.length} Movies
+          </span>
         </div>
+
+        <SearchBar
+          search={search}
+          setSearch={setSearch}
+        />
+
+        {loading ? (
+          <div className="loading">
+            <h3>Loading movies...</h3>
+          </div>
+        ) : (
+          <div className="movie-grid">
+            {filteredMovies.map((movie) => (
+              <MovieCard
+                key={movie._id}
+                movie={movie}
+              />
+            ))}
+
+            {filteredMovies.length === 0 && (
+              <div className="no-movies">
+                <h3>🎬 No movies found</h3>
+                <p>
+                  Try searching for another movie.
+                </p>
+              </div>
+            )}
+          </div>
+        )}
       </section>
-    </>
+    </div>
   );
 }
 
